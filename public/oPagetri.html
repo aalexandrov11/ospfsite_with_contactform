@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="/css/styles.css"> 
+        <title>Home of the OSPF!</title>
+    </head>
+    <body>
+        <div style="top:0; position:fixed; width:100%; height:auto;"><!--height:50px; z-index:1;-->
+            <div class="bar white padding card" style="padding:0px 16px;"><!--height:50px;-->
+                <a href="index.html" class="barItem button" style="padding:0; height:50px;">
+                    <img src="img\ospflogo.png" alt="ospfLogo" style="user-select:none; width:150px; height:46px; padding:2px 0; border:0;">
+                </a>
+                <div class="barItem centerF"><!--style="padding:0px 60px;"-->
+                    <a href="index.html" class="barItem">НАЧАЛО</a>
+                    <a href="oPage.html" class="barItem">ABOUT</a>
+                    <a href="packet.html" class="barItem">Пакет</a>
+                    <a href="history.html" class="barItem">История</a>
+                    <a href="contact.html" class="barItem">Контакт</a>
+                </div>
+            </div>
+        </div>
+        <header class="content" style="max-width:1500px; min-width:500px;">
+        </header>
+        <div class="content" style="max-width:1100px; margin-top:70px;">
+            <h3 style="text-decoration: underline;">OSPF relationships...</h3>
+            <p style="text-align:justify;">OSPF поддържа сложни мрежи с множество маршрутизатори, включително резервни рутери, за да балансира натоварването на трафика върху множество връзки към други подмрежи. Съседните рутери в един и същи излъчващ домейн или във всеки край на връзката между две точки комуникират помежду си чрез OSPF протокол. Маршрутизаторите образуват съседни места, когато са се засекли. Това откриване се инициира, когато рутер се идентифицира в пакет   с Hello протокол. След това се установява двупосочно състояние и се образува най-основната връзка. Рутерите в Ethernet или Frame Relay мрежа избират Designated Router (DR) и Backup Designated Router (BDR), които действат като хъб за намаляване на трафика между рутери. OSPF използва както едноадресни, така и многоадресни режими на предаване, за да изпраща „Hello“ пакети и актуализации на състоянието на връзката.</p>
+            <center><img src="img\mrejaDR.png" alt="ospfarea"></center>
+            <p style="text-align:justify;">OSPF установява и поддържа връзките към съседи за да обменя актуализации с други рутери. Образува се таблицата с връзки към съседите. Два OSPF рутера са съседи, ако са членове на една и съща подмрежа и споделят един и същ идентификатор на област, маска на подмрежата, таймери и удостоверяване. Съседството е връзка между два рутера, която им позволява да се виждат и разбират един с друг, но нищо повече. Съседите при OSPF не обменят никаква информация за маршрутизиране - единствените пакети, които обменят, са Hello пакети. Между избрани съседи може да се формират присъединения (adjacent), които  им позволяват да обменят маршрутна информация. Два маршрутизатора първо трябва да са съседи и едва тогава могат да станат присъединени. Два маршрутизатора стават съседни, ако поне един от тях е Designated Router или Backup Designated Router или са свързани помежду си с връзка от две точки или връзка от точка към много точки.</p>
+            <center><img src="img\ospfrelations.png" alt="ospfarea"></center>
+            <h3>Състояния на OSPF рутерите:</h3>
+            <ol>
+                <li><b>Down</b> От съседа все още не се получава информация.</li>
+                <br>
+                <li><b>Init</b> Init е еднопосочен (one-way) Hello. DeviceA изпраща Hello пакет. DeviceB обявява one-way, защото не вижда своя router ID в Hello пакета.</li>
+                <br>
+                <li><b>2-way</b> 2-way състояние при установяване на двупосочни комуникации – начало на OSPF съседство. Избор на DR и BDR. router ID на DeviceB е по-голям, избран е за DR. (Designated Router или Master)</li>
+                <br>
+                <li><b>Exstart</b> Exstart инициализира процеса на синхронизация на топол. Б.Д. (DD). Избират се Master и slave (или DR и BDR), Seq0 (началния) за DD обмена.</li>
+                <br>
+                <li><b>Exchange</b> Рутерът описва цялата си link-state database чрез DD пакети. Всеки DD Seq се потвърждава</li>
+                <br>
+                <li><b>Loading</b> LS request се изпращат да заявят по-нови състояния на връзките (LSA - link state advertisement), които не са били получени по време на exchange.</li>
+                <br>
+                <li><b>Full</b> Между OSPF съседите е обменена пълната информация. DeviceA и DeviceB са си обменили цялата база от данни и с във Full.</li>
+            </ol>
+            <center><img src="img\status.png" alt="status"></center>
+        </div>
+        <hr id="hrPage">
+        <div id="pageNum">
+            <a href="oPage.html">1</a>
+            <a href="oPagetwo.html">2</a>
+            <a>3</a>
+        </div>
+        <footer class="footerBG">
+            <div class="footer">
+                <h4>MENU</h4>
+                <a href="index.html">Начало</a>
+                <a href="oPage.html">ABOUT</a>
+                <br>
+                <a href="packet.html">Пакет</a>
+                <a href="history.html">History</a>
+                <a href="contact.html">Контакт</a>
+            </div>
+            <div id="footer">
+                <h4>Copyright® alex</h4>
+            </div>
+            <div class="footer1">
+                <h3 style="margin:0;">Изготвено от:</h3>
+                <p style="margin:0;">Алекс Радославов Александров</p>
+                <p style="margin:0;">КСИ, поток 10, група 49, фак.№ 121216123</p>
+            </div>
+        </footer>
+    </body>
+</html>

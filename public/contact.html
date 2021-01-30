@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/css/styles.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Balsamiq+Sans&display=swap" rel="stylesheet">
+    <title>Contact me</title>
+</head>
+<body class="bodyF">
+    <div style="top:0; position:fixed; width:100%; height:auto; z-index:999;"><!--height:50px; z-index:1;-->
+        <div class="bar white padding card" style="padding:0px 16px;"><!--height:50px;-->
+            <a href="index.html" class="barItem button" style="padding:0; height:50px;">
+                <img src="img\ospflogo.png" alt="ospfLogo" style="user-select:none; width:150px; height:46px; padding:2px 0; border:0;">
+            </a>
+            <div class="barItem centerF"><!--style="padding:0px 60px;"-->
+                <a href="index.html" class="barItem">НАЧАЛО</a>
+                <a href="oPage.html" class="barItem">ABOUT</a>
+                <a href="packet.html" class="barItem">Пакет</a>
+                <a href="history.html" class="barItem">История</a>
+                <a href="contact.html" class="barItem">Контакт</a>
+            </div>
+        </div>
+    </div>
+    <!-- <header class="content" style="max-width:1200px; min-width:500px; padding-top:50px;">
+        <h1 style="text-align:center;color:#2e2b2bb9; text-shadow: 0 0 5px rgb(19, 100, 39);">Добре дошли!</h1>
+        <h2 style="text-align:center;color:#2e2b2bb9; text-shadow: 0 0 5px rgb(19, 100, 39);">Тук може да намерите информация за OSPF - динамичен протокол за маршрутизация.</h2>
+    </header>
+    <div class="content" style="max-width:1100px; margin-top:70px;">
+        <a></a>
+        <img src="img\network.png" id="contentImg" height=1000 width=1100>
+    </div> -->
+
+    <div class="form-container"><!-- send with AJAX to backend-->
+        <form class="contact-form">
+            <h2 style="font-family: 'Balsamiq Sans', cursive;">КОНТАКТ</h2>
+            <input type="text" id="name" placeholder="Име, Фамилия"></br>
+            <input type="email" id="email" placeholder="Email"></br>
+            <input type="text" id="subject" placeholder="Тема"></br>
+            <textarea id="message" placeholder="Текст" cols="30" rows="15" style="resize: none"></textarea></br>
+            <input type="submit" class="submit" value="Изпрати">
+        </form>
+    </div>
+
+    <footer class="footerBG">
+        <div class="footer">
+            <h4>MENU</h4>
+            <a href="index.html">Начало</a>
+            <a href="oPage.html">ABOUT</a>
+            <br>
+            <a href="packet.html">Пакет</a>
+            <a href="history.html">History</a>
+            <a href="contact.html">Контакт</a>
+        </div>
+        <div id="footer">
+            <h4>Copyright® alex</h4>
+        </div>
+        <div class="footer1">
+            <h3 style="margin:0;">Изготвено от:</h3>
+            <p style="margin:0;">Алекс Радославов Александров</p>
+            <p style="margin:0;">КСИ - Магистър, група 222, фак.№ 121320041</p>
+        </div>
+    </footer>
+    <script src="/js/app.js"></script>
+</body>
+</html>

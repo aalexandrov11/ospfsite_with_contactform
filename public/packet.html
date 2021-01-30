@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="/css/styles.css"> 
+        <title>Home of the OSPF!</title>
+        <style>
+            th, td{
+                border: 1px solid black;
+                padding: 5px;
+            }
+        </style>
+    </head>
+    <body>
+        <div style="top:0; position:fixed; width:100%; height:auto;"><!--height:50px; z-index:1;-->
+            <div class="bar white padding card" style="padding:0px 16px;"><!--height:50px;-->
+                <a href="index.html" class="barItem button" style="padding:0; height:50px;">
+                    <img src="img\ospflogo.png" alt="ospfLogo" style="user-select:none; width:150px; height:46px; padding:2px 0; border:0;">
+                </a>
+                <div class="barItem centerF"><!--style="padding:0px 60px;"-->
+                    <a href="index.html" class="barItem">НАЧАЛО</a>
+                    <a href="oPage.html" class="barItem">ABOUT</a>
+                    <a href="packet.html" class="barItem">Пакет</a>
+                    <a href="history.html" class="barItem">История</a>
+                    <a href="contact.html" class="barItem">Контакт</a>
+                </div>
+            </div>
+        </div>
+        <header class="content" style="max-width:1200px; min-width:500px; padding-top:50px;">
+            
+        </header>
+        <div class="content" style="max-width:1100px; margin-top:50px;">
+            <h1 style="text-decoration: underline; text-align: center;">OSPF пакет</h1>
+            <p>Всички пакети OSPF споделят обща структора от 24-байта. Тя позволява на получаващият рутер да валидира и обработва пакетите:</p>
+            <table id="tablePack" align="center">
+                <caption>Структора на OSPF пакет</caption>
+                <tr>
+                    <th style="background-color: #36a75b;">Version #</th>
+                    <th style="background-color: #3690a7;">Type</th>
+                    <th style="background-color: #9436a7;">Packet lenght</th>
+                    <th style="background-color: #a73658;">Router ID</th>
+                    <th style="background-color: #e4d61a;">Area ID</th>
+                    <th style="background-color: #a73d36;">Checksum</th>
+                    <th style="background-color: #e9a615;">Authentication type</th>
+                    <th style="background-color: #f3ab71;">Authentication</th>
+                    <th style="background-color: #876cec;">Data</thstyle="background-color: #36a75b;">
+                </tr>
+            </table>
+            <ul>
+                <li><b style="color: #36a75b;">Version #</b> - Версията обикновено е №2. (1 байт)</li>
+                <li><b style="color: #3690a7;">Type</b> - Той определя типа OSPF пакет. Има 5 различни типа пакети OSPF. (1 байт)</li>
+                <span>&nbsp;&nbsp;&nbsp;</span>
+                <ol>
+                    <b><li>Hello пакет</li></b>
+                    <b><li>Database Descriptor пакет</li></b>
+                    <b><li>Link State Request пакет</li></b>
+                    <b><li>Link State Update пакет</li></b>
+                    <b><li>Link State Acknowledgment пакет</li></b>
+                </ol>
+                <br>
+                <li><b style="color: #9436a7;">Packet lenght</b> - Обща дължина на OSPF пакета (2 байта)</li>
+                <li><b style="color: #a73658;">Router ID</b> - Идент. № на рутера който изпраща пакета (4 байта)</li>
+                <li><b style="color: #e4d61a;">Area ID</b> - 32-битов идентификатор на зона, присвоен на интерфейса, изпращащ OSPF пакета (4-байта)</li>
+                <li><b style="color: #a73d36;;">Checksum</b> - Стандартна IP контролна сума на OSPF пакет, с изключение на полето за удостоверяване (2-байта)</li>
+                <li><b style="color: #e9a615;">Authentication type</b> - Тип на удостоверяване (2-байта)</li>
+                <span>&nbsp;&nbsp;&nbsp;</span>
+                <ol start="0">
+                    <b><li>Без парола</li></b>
+                    <b><li>Текстова парола</li></b>
+                    <b><li>MD5 (хеширащ алгоритъм) автентификация</li></b>
+                </ol>
+                <br>
+                <li><b style="color: #f3ab71;">Authentication</b> - Автентификационни данни за потвърждаване целостта на пакета (8-байта)</li>
+                <li><b style="color: #876cec;">Data</b> - Може да съдържа всякаква информация и няма фиксирана дължина</li>
+            </ul>
+            <h3>Типове пакети</h3>
+            <table id="tableType">
+                <tr>
+                    <th style="width: 30%; background-color: #36a75b">Tип пакет</thstyle="width: 20%;">
+                    <th style="background-color: #36a75b">Функция</th>
+                </tr>
+                <tr>
+                    <td style="width: 30%;">Hello пакет</td>
+                    <td>Изпраща се периодично за откриване и поддържане на отношенията на съседите.</td>
+                </tr>
+                <tr>
+                    <td style="width: 30%;">Database Descriptor (DD) пакет</td>
+                    <td>Съдържа кратка информация за локалната база данни за състояние на връзки (LSDB) и синхронизира LSDB на две устройства.</td>
+                </tr>
+                <tr>
+                    <td style="width: 30%;">Link State Request (LSR) пакет</td>
+                    <td>Изисква необходимите LSA (link-state advertisement) от съседите. LSR пакетите се изпращат само след успешна обмяна на DD пакети.</td>
+                </tr>
+                <tr>
+                    <td style="width: 30%;">Link State Update (LSU) пакет</td>
+                    <td>Изпраща необходимите LSA на съседите.</td>
+                </tr>
+                <tr>
+                    <td style="width: 30%;">Link State Acknowledgment (LSAck) пакет</td>
+                    <td>Признава получаването на LSA.</td>
+                </tr>
+            </table>
+            <br>
+        </div>
+        <footer class="footerBG">
+            <div class="footer">
+                <h4>MENU</h4>
+                <a href="index.html">Начало</a>
+                <a href="oPage.html">ABOUT</a>
+                <br>
+                <a href="packet.html">Пакет</a>
+                <a href="history.html">History</a>
+                <a href="contact.html">Контакт</a>
+            </div>
+            <div id="footer">
+                <h4>Copyright® alex</h4>
+            </div>
+            <div class="footer1">
+                <h3 style="margin:0;">Изготвено от:</h3>
+                <p style="margin:0;">Алекс Радославов Александров</p>
+                <p style="margin:0;">КСИ, поток 10, група 49, фак.№ 121216123</p>
+            </div>
+        </footer>
+    </body>
+</html>
